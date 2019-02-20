@@ -1,5 +1,6 @@
 import Cell
 import os
+import random
 
 
 # Draw the board that we are provided
@@ -19,12 +20,16 @@ def clear_screen():
 
 
 # Return a 2d array full of dead cells
-def generate_new_board(size):
+def generate_new_board(size, seed_freq):
     board = []
     for x in range(size):
         row = []
         for y in range(size):
-            row.append(Cell.Cell(x, y))
+            if random.randint(1, 101) > (100 - seed_freq):
+                is_alive = True
+            else:
+                is_alive = False
+            row.append(Cell.Cell(x, y, size, is_alive))
         board.append(row)
     return board
 

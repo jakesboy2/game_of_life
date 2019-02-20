@@ -8,7 +8,7 @@ import time
 def get_next_states(board, size):
     for col in range(size):
         for row in range(size):
-            board[col][row].prepare_next_state()
+            board[col][row].prepare_next_state(board)
 
 
 # Loop over the board and apply for the next state for each cell
@@ -24,17 +24,24 @@ def main():
     # Get the size of the board from the user or the command line
     if(len(sys.argv) == 2):
         board_size = int(sys.argv[1])
-        generation_time = int(input("Enter generation speed: "))
+        generation_time = float(input("Enter generation speed (in seconds): "))
+        seed_freq = int(input("Enter frequency seed (1-100): "))
     elif(len(sys.argv) == 3):
         print(sys.argv)
         board_size = int(sys.argv[1])
-        generation_time = int(sys.argv[2])
+        generation_time = float(sys.argv[2])
+        seed_freq = int(input("Enter frequency seed (1-100): "))
+    elif(len(sys.argv) == 4):
+        board_size = int(sys.argv[1])
+        generation_time = float(sys.argv[2])
+        seed_freq = int(sys.argv[3])
     else:
         board_size = int(input("Enter board size: "))
-        generation_time = int(input("Enter generation speed: "))
+        generation_time = float(input("Enter generation speed (in seconds): "))
+        seed_freq = int(input("Enter frequency seed (1-100): "))
 
     # Set up the board and draw it on the screen
-    board = Board.generate_new_board(board_size)
+    board = Board.generate_new_board(board_size, seed_freq)
     Board.draw_board(board, board_size)
 
     while(True):
