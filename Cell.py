@@ -30,6 +30,9 @@ class Cell(object):
     def is_alive(self):
         return self.is_alive
 
-    # print out the object
+    # return string repr of the object
     def __repr__(self):
-        print("[" + self.x + ", " + self.y + "]")
+        if self.is_alive:
+            return "O"
+        else:
+            return "X"
