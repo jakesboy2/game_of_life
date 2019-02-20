@@ -1,22 +1,19 @@
 class Cell(object):
-    current_x = 0
-    current_y = 0
-    is_alive = False
-
-    next_x = 0
-    next_y = 0
 
     def __init__(self, x, y):
         self.x = x
         self.y = y
+        self.is_alive = False
+        self.next_state = False
 
     # Get values for our next state
     def prepare_next_state(self):
-        pass
+        self.next_state = True
 
     # Enter cell into the next state using the stored values
     def enter_next_state(self):
-        pass
+        self.is_alive = self.next_state
+        self.next_state = False
 
     # Get a list of neighbors to the cell
     def get_all_neighbors(self):
@@ -27,12 +24,12 @@ class Cell(object):
         pass
 
     # Check if the cell is alvie
-    def is_alive(self):
+    def get_is_alive(self):
         return self.is_alive
 
     # return string repr of the object
     def __repr__(self):
-        if self.is_alive:
+        if self.is_alive is True:
             return "O"
         else:
             return "X"
