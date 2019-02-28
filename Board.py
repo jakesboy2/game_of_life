@@ -15,8 +15,12 @@ def draw_board(board, size):
 
 
 # Clear the console screen
-def clear_screen():
-    os.system('clear')
+def clear_screen(platform):
+
+    if platform == "win32":
+        os.system('cls')
+    else:
+        os.system('clear')
 
 
 # Return a 2d array full of dead cells

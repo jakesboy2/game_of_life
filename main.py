@@ -2,6 +2,7 @@ import Cell
 import Board
 import sys
 import time
+from sys import platform
 
 
 # Loop over the board and get the next state for each cell
@@ -47,7 +48,7 @@ def main():
     while(True):
 
         # Clear screen of last generation
-        Board.clear_screen()
+        Board.clear_screen(platform)
 
         # Pre-update next state
         get_next_states(board, board_size)
